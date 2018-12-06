@@ -32,7 +32,8 @@ module.exports = {
       'demo': resolve('demo'),
       'assets': resolve('src/assets'),
       'components': resolve('src/components')
-    }
+    },
+    mainFields: ['browser',  'main']
   },
   module: {
     rules: [
@@ -44,6 +45,11 @@ module.exports = {
         options: {
           formatter: require('eslint-friendly-formatter')
         }
+      },
+      {
+        test: /\.js[x]?$/,
+        loaders: ['es3ify-loader'],
+        enforce: "post"
       },
       {
         test: /\.vue$/,
